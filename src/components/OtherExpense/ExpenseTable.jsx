@@ -16,7 +16,7 @@ import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import { BASE_URL } from "../../api_service/api";
 const ExpenseTable = () => {
   const [expenses, setExpenses] = useState([]);
   const [filteredExpenses, setFilteredExpenses] = useState([]);
@@ -65,8 +65,8 @@ const ExpenseTable = () => {
           return;
         }
         const url = viewingMyData
-          ? "http://localhost:8000/api/expenses/mydata/"
-          : "http://localhost:8000/api/expenses/";
+          ? `${BASE_URL}/expenses/mydata/`
+          : `${BASE_URL}/expenses/`;
         const response = await axios.get(url, {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -192,8 +192,8 @@ const ExpenseTable = () => {
       const response = await axios({
         method: editingExpense ? "put" : "post",
         url: editingExpense
-          ? `http://localhost:8000/api/expenses/${editingExpense.id}/`
-          : "http://localhost:8000/api/expenses/",
+          ? `${BASE_URL}/expenses/${editingExpense.id}/`
+          : `${BASE_URL}/expenses/`,
         data: formData,
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -250,7 +250,7 @@ const ExpenseTable = () => {
     setFilteredExpenses(filteredExpenses.filter((exp) => exp.id !== expenseId));
 
     try {
-      await axios.delete(`http://localhost:8000/api/expenses/${expenseId}/`, {
+      await axios.delete(`${BASE_URL}/expenses/${expenseId}/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Expense deleted successfully.");

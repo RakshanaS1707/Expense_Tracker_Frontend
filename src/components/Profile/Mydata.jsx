@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaEdit } from "react-icons/fa";
-
+import { BASE_URL } from "../../api_service/api";
 const Mydata = () => {
   const [expenses, setExpenses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,7 +26,7 @@ const Mydata = () => {
       }
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/expenses/mydata/",
+          `${BASE_URL}/expenses/mydata/`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -91,7 +91,7 @@ const Mydata = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/expenses/${editingExpense.id}/`,
+        `${BASE_URL}/expenses/${editingExpense.id}/`,
         formData,
         {
           headers: { Authorization: `Bearer ${token}` },

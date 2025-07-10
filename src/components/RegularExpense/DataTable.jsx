@@ -769,7 +769,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import dayjs from "dayjs";
 import AddItem from "../UpdateItem/Additem";
 import axios from "axios";
-
+import { BASE_URL } from "../../api_service/api";
 const PAGE_SIZE = 6;
 
 const DataTable = () => {
@@ -910,7 +910,7 @@ const DataTable = () => {
     if (!confirm) return;
     try {
       console.log("Deleting item with ID:", itemId);
-      await axios.delete(`http://localhost:8000/api/order-items/${itemId}/`, {
+      await axios.delete(`${BASE_URL}/order-items/${itemId}/`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("access")}` },
       });
       fetchData(currentPage);
@@ -933,7 +933,7 @@ const DataTable = () => {
 
       console.log("Updating item with payload:", payload);
       await axios.put(
-        `http://localhost:8000/api/order-items/${editFormData.id}/`,
+        `${BASE_URL}/order-items/${editFormData.id}/`,
         payload,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("access")}` },

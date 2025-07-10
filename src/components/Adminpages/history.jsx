@@ -7,7 +7,7 @@ import { saveAs } from "file-saver";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import dayjs from "dayjs";
-
+import { BASE_URL } from "../../api_service/api";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const sanitizeText = (text) => text.replace(/</g, "<").replace(/>/g, ">");
@@ -46,7 +46,7 @@ const History = () => {
 
      
       console.log("Fetching regular expenses...");
-      const regularResponse = await axios.get("http://localhost:8000/api/orders/grouped-by-date/", {
+      const regularResponse = await axios.get(`${BASE_URL}/orders/grouped-by-date/`, {
         headers: { Authorization: `Bearer ${token}` },
         params: { year },
       });
@@ -77,7 +77,7 @@ const History = () => {
 
       
       console.log("Fetching other expenses...");
-      const otherResponse = await axios.get("http://localhost:8000/api/expenses/", {
+      const otherResponse = await axios.get(`${BASE_URL}/expenses/`, {
         headers: { Authorization: `Bearer ${token}` },
         params: { year },
       });

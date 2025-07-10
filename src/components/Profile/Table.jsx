@@ -11,7 +11,7 @@ import {
 } from "react-icons/fa";
 import dayjs from "dayjs";
 import axios from "axios";
-
+import { BASE_URL } from "../../api_service/api";
 const Table = () => {
   const [expenses, setExpenses] = useState([]);
   const [filteredExpenses, setFilteredExpenses] = useState([]);
@@ -47,7 +47,7 @@ const Table = () => {
         }
 
         const response = await axios.get(
-          "http://localhost:8000/api/expenses/",
+          `${BASE_URL}/expenses/`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -149,8 +149,8 @@ const Table = () => {
       const response = await axios({
         method: editingExpense ? "put" : "post", // Use PUT for editing
         url: editingExpense
-          ? `http://localhost:8000/api/expenses/${editingExpense.id}/`
-          : "http://localhost:8000/api/expenses/",
+          ? `${BASE_URL}/expenses/${editingExpense.id}/`
+          : `${BASE_URL}/expenses/`,
         data: formData,
         headers: {
           Authorization: `Bearer ${token}`,

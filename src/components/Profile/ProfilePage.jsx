@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../api_service/api";
 import Table from "./Table";
 import Mydata from "./Mydata";
 import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from "recharts";
@@ -15,7 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const COLORS = ["#0E4351", "#971C8A", "#6B4BB0"];
-const BACKEND_URL = "http://localhost:8000";
+const BACKEND_URL = BASE_URL;
 
 const calculateSummary = (expenses) => {
   let total = 0, refunded = 0, pending = 0;

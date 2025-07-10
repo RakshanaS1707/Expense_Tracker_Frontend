@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 // Set up Axios instance
-const BASE_URL = 'http://127.0.0.1:8000/api/';
+// const BASE_URL = 'http://127.0.0.1:8000/api/';
+export const BASE_URL = "https://expense-tracker-backend-q61k.onrender.com/api"
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,

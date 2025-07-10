@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import dayjs from "dayjs";
 import axios from "axios";
-
+import { BASE_URL } from "../../api_service/api";
 const UpdateItem = () => {
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -63,8 +63,9 @@ const UpdateItem = () => {
     (async () => {
       try {
         const [catRes, itemRes] = await Promise.all([
-          axios.get("http://localhost:8000/api/categories/", getAuthHeaders()),
-          axios.get("http://localhost:8000/api/items/", getAuthHeaders()),
+          axios.get(
+            `${BASE_URL}/categories/`, getAuthHeaders()),
+          axios.get(`${BASE_URL}/items/`, getAuthHeaders()),
         ]);
         setCategories(catRes.data || []);
         setItems(itemRes.data || []);
@@ -84,7 +85,7 @@ const UpdateItem = () => {
 
   const addItem = async (data) => {
     const response = await axios.post(
-      "http://localhost:8000/api/items/",
+      `${BASE_URL}/items/`,
       data,
       getAuthHeaders()
     );
@@ -93,7 +94,7 @@ const UpdateItem = () => {
 
   const updateItem = async (id, data) => {
     const response = await axios.put(
-      `http://localhost:8000/api/items/${id}/`,
+      `${BASE_URL}/items/${id}/`,
       data,
       getAuthHeaders()
     );
@@ -102,7 +103,7 @@ const UpdateItem = () => {
 
   const deleteItem = async (id) => {
     const response = await axios.delete(
-      `http://localhost:8000/api/items/${id}/`,
+      `${BASE_URL}/items/${id}/`,
       getAuthHeaders()
     );
     return response.data;
@@ -110,7 +111,7 @@ const UpdateItem = () => {
 
   const fetchItemPriceHistory = async (itemId) => {
     const response = await axios.get(
-      `http://localhost:8000/api/items/${itemId}/price-history/`,
+      `${BASE_URL}/items/${itemId}/price-history/`,
       getAuthHeaders()
     );
     return response.data;
@@ -119,7 +120,7 @@ const UpdateItem = () => {
   const fetchHistory = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/items/",
+        `${BASE_URL}/items/`,
         getAuthHeaders()
       );
       const allHistory = [];

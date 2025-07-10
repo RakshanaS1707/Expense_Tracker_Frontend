@@ -5,7 +5,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import { BASE_URL } from "../api_service/api";
 const COLORS = ["#1c455e", "#1d5b79", "#195f76"];
 const PAGE_SIZE = 10;
 
@@ -38,7 +38,7 @@ const AdminDashboard = () => {
         ...filters,
       });
 
-      const response = await axios.get(`http://localhost:8000/api/orders/grouped-by-date/?${params.toString()}`, {
+      const response = await axios.get(`${BASE_URL}/orders/grouped-by-date/?${params.toString()}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -62,7 +62,7 @@ const AdminDashboard = () => {
 
       try {
       
-        const expenseResponse = await axios.get("http://localhost:8000/api/expenses/", {
+        const expenseResponse = await axios.get(`${BASE_URL}/expenses/`, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
@@ -195,7 +195,7 @@ const AdminDashboard = () => {
         (exp) => exp.id === expenseId
       );
       await axios.put(
-        `http://localhost:8000/api/expenses/${expenseId}/`,
+        `${BASE_URL}/expenses/${expenseId}/`,
         {
           date: updatedExpense.date,
           user: updatedExpense.user.id,

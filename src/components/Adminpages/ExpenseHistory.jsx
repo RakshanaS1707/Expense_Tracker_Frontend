@@ -6,7 +6,7 @@ import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import dayjs from "dayjs";
 import { getGroupedOrders } from "../../api_service/api";
-
+import { BASE_URL } from "../../api_service/api";
 const sanitizeText = (text) => text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 const ExpenseHistory = () => {
@@ -61,7 +61,7 @@ const ExpenseHistory = () => {
       });
 
       
-      const otherResponse = await axios.get("http://localhost:8000/api/expenses/", {
+      const otherResponse = await axios.get(`${BASE_URL}/expenses/`, {
         headers: { Authorization: `Bearer ${token}` },
         params: {
           type: appliedFilters.type,

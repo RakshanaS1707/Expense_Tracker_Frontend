@@ -8,7 +8,7 @@ const NotificationsPage = () => {
     const fetchNotifications = async () => {
       try {
         const token = localStorage.getItem("access");
-        const res = await axios.get("http://127.0.0.1:8000/api/notifications/", {
+        const res = await axios.get(`${BASE_URL}/notifications/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import dayjs from "dayjs";
 import { FaTrash } from "react-icons/fa";
- 
+ import { BASE_URL } from "../../api_service/api";
 // Axios instance
 const axiosInstance = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/",
+  baseURL: `${BASE_URL}/api/`,
   timeout: 5000,
 });
  

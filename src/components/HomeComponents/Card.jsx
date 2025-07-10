@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faIndianRupeeSign } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import dayjs from "dayjs";
-
+import { BASE_URL } from "../../api_service/api";
 const Card = () => {
   const [monthlyRegular, setMonthlyRegular] = useState("0.00");
   const [monthlyOther, setMonthlyOther] = useState("0.00");
@@ -24,7 +24,7 @@ const Card = () => {
 
       // 🔹 Fetch OTHER EXPENSES
       try {
-        const res = await axios.get("http://localhost:8000/api/expenses/", {
+        const res = await axios.get(`${BASE_URL}/expenses/`, {
           headers,
         });
 
@@ -50,7 +50,7 @@ const Card = () => {
       // 🔹 Fetch REGULAR EXPENSES
       try {
         const regRes = await axios.get(
-          "http://localhost:8000/api/orders/grouped-by-date/",
+          `${BASE_URL}/orders/grouped-by-date/`,
           {
             headers,
             params: { month: currentMonth },
