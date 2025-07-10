@@ -5,7 +5,7 @@ import { FaTrash } from "react-icons/fa";
  import { BASE_URL } from "../../api_service/api";
 // Axios instance
 const axiosInstance = axios.create({
-  baseURL: `${BASE_URL}/api/`,
+  baseURL: BASE_URL,
   timeout: 5000,
 });
  
