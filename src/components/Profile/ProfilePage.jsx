@@ -16,7 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const COLORS = ["#0E4351", "#971C8A", "#6B4BB0"];
-const BACKEND_URL = BASE_URL;
+const BACKEND_URL = `${BASE_URL}`;
 
 const calculateSummary = (expenses) => {
   let total = 0, refunded = 0, pending = 0;
