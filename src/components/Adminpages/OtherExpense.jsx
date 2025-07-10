@@ -67,7 +67,7 @@ const OtherExpense = () => {
       }
       const url = viewingMyData
         ? `${BASE_URL}/expenses/mydata/`
-        : `${BASE_URL}/expenses/mydata`;
+        : `${BASE_URL}/expenses/`;
       const response = await axios.get(url, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -278,7 +278,7 @@ const OtherExpense = () => {
         method: editingExpense ? "put" : "post",
         url: editingExpense
           ? `${BASE_URL}/expenses/${editingExpense.id}/`
-          : `${BASE_URL}/expenses/${editingExpense.id}/`,
+          : `${BASE_URL}/expenses/`,
         data: formData,
         headers: {
           Authorization: `Bearer ${token}`,
