@@ -240,7 +240,7 @@ const ProfilePage = () => {
   const [expenses, setExpenses] = useState([]);
 
   useEffect(() => {
-    fetch(`${BACKEND_URL}/api/profile/`, {
+    fetch(`${BACKEND_URL}/profile/`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access")}`,
       },
@@ -300,7 +300,7 @@ const ProfilePage = () => {
               className="w-24 h-24 rounded-full object-cover border-2 border-white"
               onError={(e) => {
                 e.target.onerror = null;
-                e.target.src = "/default-avatar.png";
+                e.target.src = "/Avatar.png";
               }}
             />
           </div>
