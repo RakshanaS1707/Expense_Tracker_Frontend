@@ -89,7 +89,7 @@ const PersonalInfo = ({ user, onUpdateUser, setActiveView }) => {
       }
 
       const response = await fetch(
-        `${BACKEND_URL}/api/update-profile-picture/`,
+        `${BACKEND_URL}/update-profile-picture/`,
         {
           method: "PATCH",
           headers: {
@@ -269,7 +269,7 @@ const ProfilePage = () => {
   };
 
   useEffect(() => {
-    fetch(`${BACKEND_URL}/api/expenses`, {
+    fetch(`${BACKEND_URL}/expenses`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access")}`,
       },
