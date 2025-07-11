@@ -148,11 +148,11 @@ const Sidebar = ({ isOpen, toggleSidebar, activeTab, setActiveTab }) => {
     setIsAdmin(storedUser?.role?.role_name === "Admin");
   }, []);
 
-  // Define nav items
+  
   const navItems = [
     { path: "/", name: "Home", icon: faHouse },
     {
-      path: "/regular-expense", // Unified path for both admin and employee
+      path: "/regular-expense", 
       name: "Regular Expense",
       icon: faIndianRupeeSign,
     },
@@ -163,7 +163,7 @@ const Sidebar = ({ isOpen, toggleSidebar, activeTab, setActiveTab }) => {
     },
   ];
 
-  // Add admin-only items
+  
   if (isAdmin) {
     navItems.push(
       {
@@ -174,12 +174,12 @@ const Sidebar = ({ isOpen, toggleSidebar, activeTab, setActiveTab }) => {
       {
   path: "/admin/history",
   name: "Expense History",
-  icon: faWallet, // Customize this icon if needed
+  icon: faWallet, 
 },
       {
         path: "/admin/expense-history",
         name: "All Expense History",
-        icon: faWallet, // Customize this icon if needed
+        icon: faWallet, 
       }
     );
   }
@@ -187,14 +187,14 @@ const Sidebar = ({ isOpen, toggleSidebar, activeTab, setActiveTab }) => {
   // Handle logout
   const handleLogout = async () => {
     try {
-      await logoutUser(); // optional API call
+      await logoutUser(); 
     } catch (error) {
       console.error("Logout error:", error);
     } finally {
       localStorage.removeItem("access");
       localStorage.removeItem("refresh");
       localStorage.removeItem("user");
-      window.location.href = "/login"; // Redirect to login
+      window.location.href = "/login"; 
     }
   };
 

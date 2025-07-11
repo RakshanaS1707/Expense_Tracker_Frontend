@@ -40,7 +40,7 @@ const PersonalInfo = ({ user, onUpdateUser, setActiveView }) => {
   const [formData, setFormData] = useState({
     name: user.name || "",
     email: user.email || "",
-    // profile_picture: user.profile_picture || "/default-avatar.png",
+    profile_picture: user.profile_picture || "/Avatar.png",
     profile_picture_file: null,
   });
 
@@ -48,7 +48,7 @@ const PersonalInfo = ({ user, onUpdateUser, setActiveView }) => {
     setFormData({
       name: user.name || "",
       email: user.email || "",
-      // profile_picture: user.profile_picture || "/default-avatar.png",
+       profile_picture: user.profile_picture || "/Avatar.png",
       profile_picture_file: null,
     });
   }, [user]);
@@ -74,7 +74,7 @@ const PersonalInfo = ({ user, onUpdateUser, setActiveView }) => {
     setFormData({
       name: user.name || "",
       email: user.email || "",
-      // profile_picture: user.profile_picture || "/default-avatar.png",
+       profile_picture: user.profile_picture || "/Avatar.png",
       profile_picture_file: null,
     });
   };
@@ -117,7 +117,7 @@ const PersonalInfo = ({ user, onUpdateUser, setActiveView }) => {
   };
 
   const normalizeProfilePictureUrl = (url) => {
-    // if (!url || url.trim() === "") return "/default-avatar.png";
+    if (!url || url.trim() === "") return "/Avatar.png";
     if (url.startsWith("http")) return url;
     return `${BACKEND_URL}${url}`;
   };
@@ -140,7 +140,7 @@ const PersonalInfo = ({ user, onUpdateUser, setActiveView }) => {
           alt="Profile"
           onError={(e) => {
             e.target.onerror = null;
-            e.target.src = "/default-avatar.png";
+            e.target.src = "/Avatar.png";
           }}
           className="w-36 h-36 rounded-full object-cover mb-4 border-2 border-gray-300"
         />
@@ -234,7 +234,7 @@ const ProfilePage = () => {
   const [user, setUser] = useState({
     name: "",
     email: "",
-    // profile_picture: "/default-avatar.png",
+    profile_picture: "/Avatar.png",
   });
   const [activeView, setActiveView] = useState("dashboard");
   const [expenses, setExpenses] = useState([]);
@@ -258,7 +258,7 @@ const ProfilePage = () => {
   }, []);
 
   const normalizeProfilePictureUrl = (url) => {
-    if (!url || url.trim() === "") return "/default-avatar.png";
+    if (!url || url.trim() === "") return "/Avatar.png";
     if (url.startsWith("http")) return url;
     return `${BACKEND_URL}${url}`;
   };

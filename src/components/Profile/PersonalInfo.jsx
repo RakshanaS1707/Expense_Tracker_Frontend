@@ -27,7 +27,7 @@ const PersonalInfo = () => {
           email,
           password: "",
           profilePic: null,
-          previewPic: profile_picture || "/default-avatar.png", // fallback image
+          previewPic: profile_picture || "/Avatar.png", 
         };
         setFormData(newData);
         setInitialData(newData);
